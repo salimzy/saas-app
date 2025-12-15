@@ -31,7 +31,44 @@ export default async function DashboardPage() {
             <div className="max-w-7xl mx-auto flex gap-6">
                 <Sidebar />
 
-                <main className="flex-1 ml-72">
+                <main className="flex-1 main-content z-10 overflow-y-auto p-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        {stats.map((stat) => (
+                            <div key={stat.label} className="bg-slate-800/50 backdrop-blur-lg border border-slate-700/50 rounded-xl p-6 hover:border-purple-500/30 transition">
+                                <p className="text-slate-400 text-sm font-medium">{stat.label}</p>
+                                <p className="text-3xl font-bold text-white mt-2">{stat.value}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    <h1 className="text-3xl font-bold text-white mb-8">Dashboard</h1>
+
+                    {/* Stats Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        {stats.map((stat) => (
+                            <div key={stat.label} className="bg-linear-to-br from-dark-bg/50 to-dark-bg/30 rounded-lg p-6 border border-purple-500/10">
+                                <p className="text-gray-400 text-sm font-medium">{stat.label}</p>
+                                <p className="text-2xl font-bold text-white mt-2">{stat.value}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Charts Section */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div className="bg-linear-to-r from-dark-bg/60 to-dark-bg/40 rounded-lg p-6 border border-purple-500/10">
+                            <h2 className="text-lg font-semibold text-white mb-4">Recent Activity</h2>
+                            <div className="h-64 bg-dark-bg/50 rounded flex items-center justify-center">
+                                <p className="text-gray-400">Chart placeholder</p>
+                            </div>
+                        </div>
+
+                        <div className="bg-linear-to-r from-dark-bg/60 to-dark-bg/40 rounded-lg p-6 border border-purple-500/10">
+                            <h2 className="text-lg font-semibold text-white mb-4">Performance</h2>
+                            <div className="h-64 bg-dark-bg/50 rounded flex items-center justify-center">
+                                <p className="text-gray-400">Chart placeholder</p>
+                            </div>
+                        </div>
+                    </div>
                     <h1 className="text-3xl font-bold text-white mb-8">Dashboard</h1>
 
                     {/* Stats Grid */}

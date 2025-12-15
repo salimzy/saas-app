@@ -292,3 +292,28 @@ input:focus {
 body {
   animation: fadeIn 0.3s ease-in;
 }
+
+/* Sidebar collapse behavior and main content spacing */
+:root {
+  --sidebar-width: 18rem; /* 72 */
+  --sidebar-collapsed-width: 5rem; /* 20 */
+}
+
+.main-content {
+  margin-left: var(--sidebar-width);
+  transition: margin-left 200ms ease;
+}
+
+.sidebar-collapsed .main-content {
+  margin-left: var(--sidebar-collapsed-width);
+}
+
+/* Ensure content is readable when sidebar overlays on small screens */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 0;
+  }
+  .sidebar-collapsed .main-content {
+    margin-left: 0;
+  }
+}
