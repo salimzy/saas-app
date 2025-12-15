@@ -1,23 +1,37 @@
-'use client';
+'use server';
 
 import './global.css';
-import { useState } from 'react';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+import { verifyToken } from '@/lib/jwt';
+import { prisma } from '@/lib/prisma';
 import Sidebar from '../component/Sidebar';
 
-export default function DashboardPage() {
-    const [stats] = useState([
+export default async function DashboardPage() {
+    // Server-side auth check using JWT cookie
+    const cookieStore = cookies();
+    const token = (await cookieStore).get('token')?.value;
+    if (!token) redirect('/login');
+
+    const payload = verifyToken(token);
+    if (!payload) redirect('/login');
+
+    const user = await prisma.user.findUnique({ where: { id: Number((payload as any).userId) } });
+    if (!user) redirect('/login');
+
+    const stats = [
         { label: 'Total Users', value: '1,234' },
         { label: 'Revenue', value: '$45,678' },
         { label: 'Active Projects', value: '28' },
         { label: 'Pending Tasks', value: '12' },
-    ]);
+    ];
 
     return (
         <div className="min-h-screen bg-linear-to-br from-dark-bg via-dark-bg to-purple-950/10 p-6">
             <div className="max-w-7xl mx-auto flex gap-6">
                 <Sidebar />
 
-                <main className="flex-1">
+                <main className="flex-1 ml-72">
                     <h1 className="text-3xl font-bold text-white mb-8">Dashboard</h1>
 
                     {/* Stats Grid */}
