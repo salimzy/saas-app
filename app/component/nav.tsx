@@ -9,8 +9,8 @@ export default function Nav() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
-        <div className="min-h-screen bg-linear-to-br from-slate-900 via-slate-900 to-purple-950/10 text-white">
-            {/* Navigation Bar */}
+        <div className="">
+            {/* Navigation Bar  min-h-screen bg-linear-to-br from-slate-900 via-slate-900 to-purple-950/10 text-white*/}
             <nav className="sticky top-0 z-50 border-b border-purple-500/20 bg-slate-900/80 backdrop-blur-md">
                 <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
                     <h1 className="text-2xl font-bold bg-clip-text text-gray-100 bg-linear-to-r from-purple-400 to-pink-400">
@@ -47,4 +47,4 @@ export default function Nav() {
             </nav>
         </div>
     );
-}
+};

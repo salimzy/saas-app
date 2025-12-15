@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import { Eye, EyeOff } from "lucide-react"
+import { MdVisibility, MdVisibilityOff } from "react-icons/md"
 
 
 export default function Page() {
@@ -115,7 +115,7 @@ export default function Page() {
                                     onClick={() => setShowPassword((s) => !s)}
                                     className="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-gray-300"
                                 >
-                                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                                    {showPassword ? <MdVisibilityOff className="w-5 h-5" /> : <MdVisibility className="w-5 h-5" />}
                                 </button>
                             </div>
                         </div>

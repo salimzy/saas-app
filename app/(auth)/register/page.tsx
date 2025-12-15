@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, FormEvent, JSX } from 'react'
+import { useState, FormEvent, JSX } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
@@ -43,7 +43,7 @@ export default function RegisterPage(): JSX.Element {
 
         setLoading(true)
         try {
-            const res = await fetch('/api/register', {
+            const res = await fetch('/api/auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name: name.trim(), email: email.trim(), password }),
@@ -56,7 +56,7 @@ export default function RegisterPage(): JSX.Element {
             }
 
             setSuccess('Registration successful. Redirecting...')
-            setTimeout(() => router.push('/'), 1000)
+            setTimeout(() => router.push('/dashboard'), 1000)
         } catch (err: any) {
             setError(err?.message || 'An unexpected error occurred.')
         } finally {
